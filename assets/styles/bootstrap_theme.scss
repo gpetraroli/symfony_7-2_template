@@ -1,0 +1,138 @@
+// ==========================
+// VARIABLES
+$sizes: (
+        0: 0rem,
+        1: 0.618rem,
+        2: 1.2rem,
+        3: 1.618rem,
+        4: 2.618rem,
+        5: 4.236rem,
+        6: 6.854rem,
+        7: 11.089rem,
+        8: 17.942rem,
+        9: 29.03rem,
+);
+
+$top_navbar_height: map-get($sizes, 6);
+$sidenav_height: min(100vh - $top_navbar_height);
+$sidenav_width: 300px;
+$transition_duration: .4s;
+
+// ==========================
+// TYPOGRAPHY
+
+$font-size-base: map-get($sizes, 3);
+
+$paragraph-margin-bottom: 0;
+
+$headings-margin-bottom: 0;
+
+$font-sizes: (
+        1: map-get($sizes, 2),
+        2: map-get($sizes, 3),
+        3: map-get($sizes, 4),
+        4: map-get($sizes, 5),
+        5: map-get($sizes, 6),
+        6: map-get($sizes, 7),
+);
+
+// ==========================
+// SPACING
+
+$spacers: (
+        0: map-get($sizes, 0),
+        1: map-get($sizes, 1),
+        2: map-get($sizes, 2),
+        3: map-get($sizes, 3),
+        4: map-get($sizes, 4),
+        5: map-get($sizes, 5),
+        6: map-get($sizes, 6),
+        7: map-get($sizes, 7),
+        8: map-get($sizes, 8),
+);
+
+// ==========================
+// COLORS
+
+$primary: #1971c2;
+$secondary: #40c057;
+$white: #ffffff;
+$light-gray: #f5f5f5;
+$gray: #cccccc;
+$dark-gray: #495057;
+$black: #212529;
+$highlight: #fff9db;
+$success: #2f9e44;
+$warning: #ffd43b;
+$danger: #c92a2a;
+
+$theme-colors: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "white": $white,
+        "light-gray": $light-gray,
+        "gray": $gray,
+        "dark-gray": $dark-gray,
+        "black": $black,
+        "highlight": $highlight,
+        "success": $success,
+        "warning": $warning,
+        "danger": $danger,
+);
+
+// ==========================
+// UTILITIES
+
+$box-shadow: 0px 0px 35px rgba(154, 161, 171, 0.15);
+$border-radius: 6px;
+
+// ==========================
+// FORMS
+
+$input-bg: $white;
+$input-padding-x: map-get($sizes, 2);
+$input-padding-y: map-get($sizes, 1);
+.input-group-number {
+  max-width: 250px;
+
+  input {
+    text-align: right;
+  }
+}
+
+// ==========================
+// BUTTONS
+
+$btn-padding-x: map-get($sizes, 2);
+$btn-padding-y: 0.3rem;
+
+.btn.btn-white:hover {
+  background-color: $light-gray;
+}
+
+.btn.btn-primary {
+  background-color: $primary;
+  color: $white;
+  &:hover {
+    background-color: $secondary;
+    border-color: $secondary;
+  }
+}
+
+
+// ==========================
+// TABLES
+
+$table-hover-bg: $highlight;
+
+// ==========================
+// OFFCANVAS
+
+$offcanvas-horizontal-width: auto;
+
+// ==========================
+// TOOLTIP
+$tooltip-arrow-width: 1.5rem;
+$tooltip-arrow-height: .8rem;
+$tooltip-padding-y: map-get($spacers, 2);
+$tooltip-padding-x: map-get($spacers, 2);

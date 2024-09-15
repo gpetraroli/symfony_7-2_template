@@ -1,0 +1,24 @@
+{% set icons = {
+    success: 'tabler:circle-check-filled',
+    danger: 'tabler:exclamation-circle-filled',
+    warning: 'tabler:exclamation-circle-filled',
+} %}
+
+<div class="position-fixed col-12 col-md-6 col-lg-4 col-xl-3 bottom-0 end-0 me-3 mb-3"
+     data-controller="flash-messages">
+
+    <div class="flash-messages">
+        {% for category, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash-messages__message rounded bg-white shadow d-flex align-items-center gap-2">
+                    <twig:ux:icon name="{{ icons[category] }}" class="icon-xl text-{{ category }}" />
+                    <span class="d-flex flex-column gap-1">
+                        <span class="text-{{ category }}">{{ category|capitalize }}</span>
+                        <span>{{ message }}</span>
+                    </span>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+</div>

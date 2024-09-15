@@ -1,0 +1,41 @@
+{% set menu_items = [
+    {
+        'label': 'Dashboard',
+        'link': '#',
+        'icon': 'fa-solid fa-house'
+    },
+    {
+        'label': 'Products',
+        'link': '#',
+        'icon': 'fa-solid fa-carrot'
+    },
+    {
+        'label': 'Recipes',
+        'link': '#',
+        'icon': 'fa-solid fa-plate-wheat'
+    },
+    {
+        'label': 'Suppliers',
+        'link': '#',
+        'icon': 'fa-solid fa-truck'
+    },
+    {
+        'label': 'Orders',
+
+        'link': '#',
+        'icon': 'fa-solid fa-cart-shopping'
+    },
+    {
+        'label': 'Collaborators',
+        'link': '#',
+        'icon': 'fa-solid fa-user'
+    }
+] %}
+
+<ul class="navbar-nav">
+    {% for menu_item in menu_items %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ menu_item.link }}">{{ menu_item.label }}</a>
+        </li>
+    {% endfor %}
+</ul>
