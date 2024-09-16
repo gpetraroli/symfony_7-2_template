@@ -104,7 +104,7 @@ $input-padding-y: map-get($sizes, 1);
 // BUTTONS
 
 $btn-padding-x: map-get($sizes, 2);
-$btn-padding-y: 0.1rem;
+$btn-padding-y: 0.3rem;
 
 .btn.btn-white:hover {
   background-color: $light-gray;
