@@ -56,6 +56,7 @@ ENTRYPOINT ["/var/www/app/docker/entrypoint.prod.sh"]
 
 FROM caddy_upstream as caddy
 
+# only for testing purposes
 RUN apk add nano
 
 # copy caddy config
