@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="d-flex flex-column">
+        <div>
+            <twig:Topbar class="topbar"/>
+
+            <div class="d-flex">
+                <nav class="sidenav navbar bg-light-gray p-1 align-items-start overflow-scroll">
+                    <twig:Menu/>
+                </nav>
+
+                <div class="main-content p-2 overflow-scroll w-100">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

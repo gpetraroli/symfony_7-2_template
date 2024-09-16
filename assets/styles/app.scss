@@ -1,2 +1,7 @@
 @import "bootstrap_theme";
 @import '../../vendor/twbs/bootstrap/scss/bootstrap';
+
+@import "globals";
+@import "topbar";
+@import "sidebar";
+@import "main_content";

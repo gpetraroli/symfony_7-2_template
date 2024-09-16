@@ -1,0 +1,15 @@
+<nav {{ attributes.defaults({class: 'navbar bg-light-gray p-1' }) }}>
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarMenu"
+            aria-controls="navbarMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="offcanvas offcanvas-start w-50" tabindex="-1" id="navbarMenu" aria-labelledby="navbarMenuLabel" >
+        <div class="offcanvas-header">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <twig:Menu />
+        </div>
+    </div>
+</nav>
