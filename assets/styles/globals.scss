@@ -1,3 +1,23 @@
 html {
   font-size: 62.5%;
 }
+
+.icon-s, .icon-m, .icon-l, .icon-xl {
+  height: auto;
+}
+
+.icon-s {
+  width: map-get($sizes, 2);
+}
+
+.icon-m {
+  width: map-get($sizes, 3);
+}
+
+.icon-l {
+  width: map-get($sizes, 4);
+}
+
+.icon-xl {
+  width: map-get($sizes, 5);
+}
