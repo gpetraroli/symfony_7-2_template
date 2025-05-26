@@ -21,13 +21,7 @@ RUN install-php-extensions \
 COPY --from=composer_upstream --link /composer /usr/bin/composer
 
 # update repositories
-RUN apt update
-
-# (optional) install nano
-RUN apt install nano -yq
-
-# copy project
-COPY . /var/www/app/
+# RUN apt update
 
 WORKDIR /var/www/app
 
@@ -38,14 +32,19 @@ EXPOSE 9000
 
 FROM php_base AS php_dev
 
-RUN chmod +x /var/www/app/docker/entrypoint.dev.sh
-
-ENTRYPOINT ["/var/www/app/docker/entrypoint.dev.sh"]
-
 # =====================================================================
 # PHP PROD IMAGE ======================================================
 
 FROM php_base AS php_prod
+
+# copy project
+COPY . .
+
+RUN composer install --prefer-dist --no-progress --no-interaction
+
+RUN php ./bin/console importmap:install
+
+RUN ./bin/console sass:build
 
 RUN chmod +x /var/www/app/docker/entrypoint.prod.sh
 
@@ -55,9 +54,6 @@ ENTRYPOINT ["/var/www/app/docker/entrypoint.prod.sh"]
 # CADDY IMAGE =========================================================
 
 FROM caddy_upstream as caddy
-
-# only for testing purposes
-RUN apk add nano
 
 # copy caddy config
 COPY docker/Caddyfile /etc/caddy/Caddyfile

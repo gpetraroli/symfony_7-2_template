@@ -1,27 +1,24 @@
-name: ${PROJECT_NAME}
+name: gaia
 
 services:
   caddy:
-    image: ${PROJECT_NAME}_caddy
-    container_name: ${PROJECT_NAME}_caddy
+    image: gaia_caddy
+    container_name: gaia_caddy
     build:
-      context: ../
-      dockerfile: docker/Dockerfile
       target: caddy
     depends_on:
       - php
-    volumes:
-      - ../:/var/www/app
+    
 
   postgres:
     image: postgres:16.4-alpine3.20
-    container_name: ${PROJECT_NAME}_postgres
+    container_name: gaia_postgres
     environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: gaia
+      POSTGRES_USER: gaia
+      POSTGRES_PASSWORD: gaia_pwd
     healthcheck:
-      test: [ "CMD", "pg_isready", "-d", "${POSTGRES_DB}", "-U", "${POSTGRES_USER}" ]
+      test: [ "CMD", "pg_isready", "-d", "gaia", "-U", "gaia" ]
       timeout: 5s
       retries: 5
       start_period: 60s
@@ -29,24 +26,22 @@ services:
       - database_data:/var/lib/postgresql/data:rw
 
   php:
-    image: ${PROJECT_NAME}_php
-    container_name: ${PROJECT_NAME}_php
+    image: gaia_php
+    container_name: gaia_php
     build:
-      context: ../
-      dockerfile: docker/Dockerfile
       target: php_dev
     depends_on:
       - postgres
     volumes:
-      - ../:/var/www/app
+      - ./:/var/www/app
 
   ###> symfony/mercure-bundle ###
   mercure:
     image: dunglas/mercure
-    container_name: ${PROJECT_NAME}_mercure
+    container_name: gaia_mercure
     environment:
-      MERCURE_PUBLISHER_JWT_KEY: ${MERCURE_PUBLISHER_JWT_KEY}
-      MERCURE_SUBSCRIBER_JWT_KEY: ${MERCURE_PUBLISHER_JWT_KEY}
+      MERCURE_PUBLISHER_JWT_KEY: '!ChangeThisMercureHubJWTSecretKey!'
+      MERCURE_SUBSCRIBER_JWT_KEY: '!ChangeThisMercureHubJWTSecretKey!'
     healthcheck:
       test: ["CMD", "curl", "-f", "https://localhost/healthz"]
       timeout: 5s
