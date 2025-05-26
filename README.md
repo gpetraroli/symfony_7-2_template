@@ -10,6 +10,7 @@ This is a template for a Symfony 7.2 web app. It includes a basic setup for a Sy
 - Basic twig layout
 - Basic Bootstrap theme
 - Flash messages
+- Mercure server
 
 ## Requirements
 - Docker
