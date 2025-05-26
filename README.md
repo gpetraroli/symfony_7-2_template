@@ -1,4 +1,4 @@
-# Symfony 7.1 web app template
+# Symfony 7.2 web app template
 
 ## Description
 This is a template for a Symfony 7.1 web app. It includes a basic setup for a Symfony 7.1 web app with a Docker environment.
