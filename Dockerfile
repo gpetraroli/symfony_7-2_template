@@ -15,12 +15,12 @@ RUN install-php-extensions \
     opcache \
     zip \
     pdo \
-    pdo_pgsql
+    pdo_pgsql \
+    && rm -rf /var/lib/apt/lists/*
 
 # install composer
 COPY --from=composer_upstream --link /composer /usr/bin/composer
 
-# update repositories
 # RUN apt update
 
 WORKDIR /var/www/app
@@ -31,6 +31,8 @@ EXPOSE 9000
 # PHP DEV IMAGE =======================================================
 
 FROM php_base AS php_dev
+
+ENTRYPOINT ["/var/www/app/docker/entrypoint.dev.sh"]
 
 # =====================================================================
 # PHP PROD IMAGE ======================================================
